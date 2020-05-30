@@ -7,16 +7,16 @@ Solar panels deliver different currents at different voltages, in the specs belo
  The microcontroller will vary the duty cycle of the buck converter, lowering the voltage of the panel from between open circuit voltage and the battery's voltage.
  Additionally, I don't want to overcharge the battery (It's currently directly connected and who knows what rate it's working at) so I'll add some control logic to trickle charge the battery.
  Since I'm a data geek, I've added an SD card so I can monitor the panel's performance over time, and the truck's (hopefully full) state of charge.
-#Parts
+ # Parts
  
-##Voltage sensing
+ ## Voltage sensing
  The voltage sensing is reading the panel's voltage and the battery's voltage. The panel voltage is used in the control loop to calculate the power we're pulling from the panel. The battery voltage is measured to check state of charge.
  I've used high value resistors because this current draw is constant, even at night. The filtering is agressive so I'll need to slow down my control loop and watch out for oscillation.
 
-##CPU
+ ## CPU
  I've wanted to get my feet wet with ARM processors after taking a class on them in college. This processor has a small form factor and low power to boost efficiency.
  
-##Buck converter
+## Buck converter
 Thanks TI for making the buck converter component datasheet! I've chosen values from the panel specs below, but added a much larger inductor in case my frequency needs to go down, or I want to convert much smaller currents
 I've added a backup diode in case the syncronous switching doesn't work out. 
  
