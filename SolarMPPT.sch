@@ -14696,6 +14696,62 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
+<library name="adafruit" urn="urn:adsk.eagle:library:420">
+<packages>
+<package name="1X2-3.5MM" urn="urn:adsk.eagle:footprint:6239989/1" library_version="2">
+<wire x1="-3.4" y1="3.4" x2="-3.4" y2="-2.2" width="0.127" layer="21"/>
+<wire x1="-3.4" y1="-2.2" x2="-3.4" y2="-3.6" width="0.127" layer="21"/>
+<wire x1="-3.4" y1="-3.6" x2="3.6" y2="-3.6" width="0.127" layer="21"/>
+<wire x1="3.6" y1="-3.6" x2="3.6" y2="-2.2" width="0.127" layer="21"/>
+<wire x1="3.6" y1="-2.2" x2="3.6" y2="3.4" width="0.127" layer="21"/>
+<wire x1="3.6" y1="3.4" x2="-3.4" y2="3.4" width="0.127" layer="21"/>
+<wire x1="-3.4" y1="-2.2" x2="3.6" y2="-2.2" width="0.127" layer="21"/>
+<pad name="1" x="1.8" y="0" drill="1" diameter="2.1844"/>
+<pad name="2" x="-1.7" y="0" drill="1" diameter="2.1844"/>
+<text x="3" y="5" size="1.27" layer="25" rot="R180">&gt;NAME</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="1X2-3.5MM" urn="urn:adsk.eagle:package:6240635/1" type="box" library_version="2">
+<packageinstances>
+<packageinstance name="1X2-3.5MM"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="1X2" urn="urn:adsk.eagle:symbol:6239476/1" library_version="2">
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.54" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
+<pin name="1" x="-5.08" y="2.54" visible="pin" length="middle" direction="pas"/>
+<pin name="2" x="-5.08" y="0" visible="pin" length="middle" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="1X2" urn="urn:adsk.eagle:component:6240975/1" prefix="J" library_version="2">
+<description>3.5mm Terminal block
+&lt;p&gt;http://www.ladyada.net/library/pcb/eaglelibrary.html&lt;p&gt;</description>
+<gates>
+<gate name="G$1" symbol="1X2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-3.5MM" package="1X2-3.5MM">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:6240635/1"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -14724,7 +14780,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="CVDDA1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1uF"/>
 <part name="CVDDA2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10nF"/>
 <part name="CVDD1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
-<part name="CVDD2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
+<part name="CVDD2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="4.7uF"/>
 <part name="CVDD3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="CVDD4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="4.7uF"/>
 <part name="CVDDIO2A" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="4.7uF"/>
@@ -14802,6 +14858,15 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+12V" device=""/>
 <part name="U6" library="SparkFun-IC-Power" library_urn="urn:adsk.eagle:library:526" deviceset="V_REG_AP2112" device="K-3.3V" package3d_urn="urn:adsk.eagle:package:39060/1" value="3.3V"/>
 <part name="+3V14" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
+<part name="J2" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="1X2" device="-3.5MM" package3d_urn="urn:adsk.eagle:package:6240635/1"/>
+<part name="J3" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="1X2" device="-3.5MM" package3d_urn="urn:adsk.eagle:package:6240635/1"/>
+<part name="J4" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="1X2" device="-3.5MM" package3d_urn="urn:adsk.eagle:package:6240635/1"/>
+<part name="J5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="1X2" device="-3.5MM" package3d_urn="urn:adsk.eagle:package:6240635/1"/>
+<part name="J6" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="1X2" device="-3.5MM" package3d_urn="urn:adsk.eagle:package:6240635/1"/>
+<part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+12V" device=""/>
+<part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+18V" device=""/>
+<part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND14" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15120,6 +15185,23 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="+3V14" gate="G$1" x="53.34" y="281.94" smashed="yes" rot="R270">
 <attribute name="VALUE" x="48.26" y="284.48" size="1.778" layer="96"/>
 </instance>
+<instance part="J2" gate="G$1" x="-177.8" y="238.76" smashed="yes" rot="R180"/>
+<instance part="J3" gate="G$1" x="-177.8" y="231.14" smashed="yes" rot="R180"/>
+<instance part="J4" gate="G$1" x="-177.8" y="220.98" smashed="yes" rot="R180"/>
+<instance part="J5" gate="G$1" x="-177.8" y="213.36" smashed="yes" rot="R180"/>
+<instance part="J6" gate="G$1" x="-177.8" y="254" smashed="yes" rot="MR0"/>
+<instance part="P+5" gate="1" x="-160.02" y="243.84" smashed="yes">
+<attribute name="VALUE" x="-162.56" y="238.76" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="P+7" gate="1" x="-160.02" y="264.16" smashed="yes">
+<attribute name="VALUE" x="-162.56" y="259.08" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="GND13" gate="1" x="-160.02" y="205.74" smashed="yes">
+<attribute name="VALUE" x="-162.56" y="203.2" size="1.778" layer="96"/>
+</instance>
+<instance part="GND14" gate="1" x="-160.02" y="251.46" smashed="yes">
+<attribute name="VALUE" x="-162.56" y="248.92" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -15291,6 +15373,26 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="U6" gate="G$1" pin="GND"/>
 <wire x1="25.4" y1="271.78" x2="15.24" y2="271.78" width="0.1524" layer="91"/>
 <junction x="15.24" y="271.78"/>
+</segment>
+<segment>
+<pinref part="J5" gate="G$1" pin="1"/>
+<wire x1="-172.72" y1="210.82" x2="-160.02" y2="210.82" width="0.1524" layer="91"/>
+<pinref part="GND13" gate="1" pin="GND"/>
+<wire x1="-160.02" y1="210.82" x2="-160.02" y2="208.28" width="0.1524" layer="91"/>
+<pinref part="J5" gate="G$1" pin="2"/>
+<wire x1="-172.72" y1="213.36" x2="-172.72" y2="210.82" width="0.1524" layer="91"/>
+<junction x="-172.72" y="210.82"/>
+<pinref part="J4" gate="G$1" pin="1"/>
+<wire x1="-172.72" y1="218.44" x2="-172.72" y2="213.36" width="0.1524" layer="91"/>
+<junction x="-172.72" y="213.36"/>
+<pinref part="J4" gate="G$1" pin="2"/>
+<wire x1="-172.72" y1="220.98" x2="-172.72" y2="218.44" width="0.1524" layer="91"/>
+<junction x="-172.72" y="218.44"/>
+</segment>
+<segment>
+<pinref part="J6" gate="G$1" pin="2"/>
+<pinref part="GND14" gate="1" pin="GND"/>
+<wire x1="-172.72" y1="254" x2="-160.02" y2="254" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -15489,6 +15591,21 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <junction x="-96.52" y="297.18"/>
 <pinref part="P+6" gate="1" pin="+12V"/>
 </segment>
+<segment>
+<pinref part="J3" gate="G$1" pin="1"/>
+<pinref part="J3" gate="G$1" pin="2"/>
+<wire x1="-172.72" y1="228.6" x2="-172.72" y2="231.14" width="0.1524" layer="91"/>
+<pinref part="J2" gate="G$1" pin="1"/>
+<junction x="-172.72" y="231.14"/>
+<pinref part="J2" gate="G$1" pin="2"/>
+<wire x1="-172.72" y1="231.14" x2="-172.72" y2="236.22" width="0.1524" layer="91"/>
+<pinref part="P+5" gate="1" pin="+12V"/>
+<wire x1="-172.72" y1="238.76" x2="-160.02" y2="238.76" width="0.1524" layer="91"/>
+<wire x1="-160.02" y1="238.76" x2="-160.02" y2="241.3" width="0.1524" layer="91"/>
+<junction x="-172.72" y="238.76"/>
+<wire x1="-172.72" y1="236.22" x2="-172.72" y2="238.76" width="0.1524" layer="91"/>
+<junction x="-172.72" y="236.22"/>
+</segment>
 </net>
 <net name="BATT_SENS" class="0">
 <segment>
@@ -15533,6 +15650,12 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="CIN3" gate="G$1" pin="1"/>
 <wire x1="-109.22" y1="187.96" x2="-101.6" y2="187.96" width="0.1524" layer="91"/>
 <junction x="-109.22" y="187.96"/>
+</segment>
+<segment>
+<pinref part="J6" gate="G$1" pin="1"/>
+<pinref part="P+7" gate="1" pin="+18V"/>
+<wire x1="-172.72" y1="256.54" x2="-160.02" y2="256.54" width="0.1524" layer="91"/>
+<wire x1="-160.02" y1="256.54" x2="-160.02" y2="261.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SOLAR_SENS" class="0">

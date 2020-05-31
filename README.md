@@ -43,3 +43,17 @@ Some other features I'd like to add are:
 - .57A 	@peak power
 - stylish aluminum frame
 
+
+# Routing considerations
+
+## Current carrying
+I'm designing this around a 1A nominal current, which is more than the 10W panel should put out on the 12V bus. Using a trace width calculator w/ 10C rise @ 1oz/ft^2, I get 11mil traces minimum. Lower trace resistance decreases losses, so this is a minimum
+
+## Overall layout
+when designing power electronics, it's important to imagine the current path and ground returns. Can you tell which way I routed it?
+
+## Coil placement
+ Big Bob is on the top, a horizontally mounted toroidal coil. On the bottom there's a bobbin wound inductor for the 5V supply.
+ The direction of the magnetic field around the bobbin creates a toroid whose axis is normal to the board while the toroid creates a field in a circle along the plane of the board.
+ Having these fields at 90 degrees should minimize coupling.
+
