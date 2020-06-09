@@ -14674,6 +14674,8 @@ Source: AVX .. aphvc.pdf</description>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X13" device="" package3d_urn="urn:adsk.eagle:package:22421/2"/>
+<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="050-024X044" package3d_urn="urn:adsk.eagle:package:23643/1"/>
+<part name="C5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="050-024X044" package3d_urn="urn:adsk.eagle:package:23643/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -14692,7 +14694,6 @@ Source: AVX .. aphvc.pdf</description>
 <text x="5.08" y="287.02" size="1.778" layer="97" rot="MR0">SDR1105-151KL</text>
 <text x="-71.12" y="281.94" size="1.778" layer="97" rot="MR0">NC</text>
 <text x="-152.4" y="256.54" size="1.778" layer="91">Add fuses</text>
-<text x="-152.4" y="233.68" size="1.778" layer="91">reroute to pairs?</text>
 <text x="25.4" y="218.44" size="7.62" layer="91">add uart</text>
 <text x="-73.66" y="119.38" size="1.778" layer="91">EPD breakout</text>
 </plain>
@@ -14932,6 +14933,14 @@ Source: AVX .. aphvc.pdf</description>
 <attribute name="NAME" x="-84.455" y="92.71" size="1.778" layer="95" rot="MR270"/>
 <attribute name="VALUE" x="-45.72" y="92.71" size="1.778" layer="96" rot="MR270"/>
 </instance>
+<instance part="C4" gate="G$1" x="-58.42" y="185.42" smashed="yes">
+<attribute name="NAME" x="-57.404" y="186.055" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-57.404" y="181.229" size="1.778" layer="96"/>
+</instance>
+<instance part="C5" gate="G$1" x="-81.28" y="157.48" smashed="yes">
+<attribute name="NAME" x="-80.264" y="158.115" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-80.264" y="153.289" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -14995,6 +15004,9 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="COUT2" gate="G$1" pin="2"/>
 <wire x1="-73.66" y1="160.02" x2="-73.66" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="160.02" x2="-60.96" y2="160.02" width="0.1524" layer="91"/>
+<pinref part="C5" gate="G$1" pin="2"/>
+<wire x1="-81.28" y1="152.4" x2="-73.66" y2="152.4" width="0.1524" layer="91"/>
+<junction x="-73.66" y="152.4"/>
 </segment>
 <segment>
 <pinref part="CIN1" gate="G$1" pin="2"/>
@@ -15004,6 +15016,9 @@ Source: AVX .. aphvc.pdf</description>
 <junction x="-81.28" y="180.34"/>
 <pinref part="GND19" gate="1" pin="GND"/>
 <wire x1="-68.58" y1="180.34" x2="-81.28" y2="180.34" width="0.1524" layer="91"/>
+<pinref part="C4" gate="G$1" pin="2"/>
+<wire x1="-58.42" y1="180.34" x2="-68.58" y2="180.34" width="0.1524" layer="91"/>
+<junction x="-68.58" y="180.34"/>
 </segment>
 <segment>
 <pinref part="GND28" gate="1" pin="GND"/>
@@ -15207,6 +15222,9 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="CIN3" gate="G$1" pin="1"/>
 <wire x1="-81.28" y1="187.96" x2="-68.58" y2="187.96" width="0.1524" layer="91"/>
 <junction x="-81.28" y="187.96"/>
+<pinref part="C4" gate="G$1" pin="1"/>
+<wire x1="-58.42" y1="187.96" x2="-68.58" y2="187.96" width="0.1524" layer="91"/>
+<junction x="-68.58" y="187.96"/>
 </segment>
 <segment>
 <pinref part="P+7" gate="1" pin="+18V"/>
@@ -15356,8 +15374,9 @@ Source: AVX .. aphvc.pdf</description>
 <segment>
 <pinref part="BIGBOB" gate="G$1" pin="2"/>
 <pinref part="COUT1" gate="G$1" pin="1"/>
-<wire x1="-86.36" y1="167.64" x2="-73.66" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="-86.36" y1="167.64" x2="-81.28" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="COUT2" gate="G$1" pin="1"/>
+<wire x1="-81.28" y1="167.64" x2="-73.66" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="167.64" x2="-60.96" y2="167.64" width="0.1524" layer="91"/>
 <junction x="-73.66" y="167.64"/>
 <pinref part="RCFIL1" gate="G$1" pin="2"/>
@@ -15366,6 +15385,9 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="-60.96" y1="167.64" x2="-45.72" y2="167.64" width="0.1524" layer="91"/>
 <junction x="-60.96" y="167.64"/>
 <junction x="-45.72" y="167.64"/>
+<pinref part="C5" gate="G$1" pin="1"/>
+<wire x1="-81.28" y1="160.02" x2="-81.28" y2="167.64" width="0.1524" layer="91"/>
+<junction x="-81.28" y="167.64"/>
 </segment>
 </net>
 <net name="BOOT_5V2" class="0">
