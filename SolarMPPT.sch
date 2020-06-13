@@ -14594,8 +14594,8 @@ Source: AVX .. aphvc.pdf</description>
 </class>
 </classes>
 <parts>
-<part name="CVDD3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
-<part name="CVDD4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="4.7uF"/>
+<part name="CVDD3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10nF"/>
+<part name="CVDD4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10uF"/>
 <part name="+3V10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+12V" device=""/>
@@ -14613,7 +14613,7 @@ Source: AVX .. aphvc.pdf</description>
 <part name="RSHUNT" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="10mOhm"/>
 <part name="RCFIL1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2"/>
 <part name="RCFIL2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2"/>
-<part name="CCFIL1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="4.7uF"/>
+<part name="CCFIL1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10uF"/>
 <part name="U2" library="FormE" deviceset="INA225" device="VSSOP"/>
 <part name="+3V11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -14631,8 +14631,8 @@ Source: AVX .. aphvc.pdf</description>
 <part name="BIGBOB" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="L-US" device="TJ6-U2" package3d_urn="urn:adsk.eagle:package:23510/1" value="390uH"/>
 <part name="GND19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="DNP" library="FormE" deviceset="MBR0520LT3G" device="" value="MBR0520LT3G"/>
-<part name="CCUR1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1uF"/>
+<part name="DNP" library="FormE" deviceset="MBR0520LT3G" device="" value="PMEG6010CEH"/>
+<part name="CCUR1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10uF"/>
 <part name="P+9" library="supply1" deviceset="+5V" device=""/>
 <part name="U7" library="FormE" deviceset="LM22674" device="" value="LM22674MRX-5.0">
 <attribute name="PARTNO" value="LM22674MRX-5.0/NOPB"/>
@@ -14644,10 +14644,10 @@ Source: AVX .. aphvc.pdf</description>
 <attribute name="PARTNO" value="PMEG6010CEH115"/>
 </part>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
-<part name="C1" library="rcl" deviceset="C-US" device="C0805" value="1uF 50v">
+<part name="C1" library="rcl" deviceset="C-US" device="C0805" value="10uF 50v">
 <attribute name="PARTNO" value="UMK212BJ105KG-T"/>
 </part>
-<part name="C2" library="rcl" deviceset="C-US" device="C1206" value="4.7uF 50v">
+<part name="C2" library="rcl" deviceset="C-US" device="C1206" value="10uF 50v">
 <attribute name="PARTNO" value="GRM31CR71H475KA12L"/>
 </part>
 <part name="GND28" library="supply1" deviceset="GND" device=""/>
@@ -14674,8 +14674,8 @@ Source: AVX .. aphvc.pdf</description>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X13" device="" package3d_urn="urn:adsk.eagle:package:22421/2"/>
-<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="050-024X044" package3d_urn="urn:adsk.eagle:package:23643/1"/>
-<part name="C5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="050-024X044" package3d_urn="urn:adsk.eagle:package:23643/1"/>
+<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="050-024X044" package3d_urn="urn:adsk.eagle:package:23643/1" value="big radial cap"/>
+<part name="C5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="050-024X044" package3d_urn="urn:adsk.eagle:package:23643/1" value="big radial cap"/>
 </parts>
 <sheets>
 <sheet>
