@@ -9,8 +9,51 @@ const unsigned char T [] PROGMEM = {
   0x0f, 0x00, 0x0f, 0x00, 0x1f, 0x80, 0x3f, 0xc0
 };
 
-//Graph::Graph(int x, int y, int w, int h, char* title, Adafruit_IL0373 display)
-void drawGraph(int x, int y, int w, int h, int* data, char* title, Adafruit_IL0373* display)
+Graph::Graph(int x, int y, int w, int h, String title, Adafruit_IL0373* display)
+{
+  X = x;
+  Y = y;
+  W = w;
+  H = h;
+  //Data;
+  Title = title;
+  Display = display;
+}
+
+void Graph::draw()
+{
+  Display->setCursor(X,Y-10);
+  Display->setTextColor(EPD_BLACK);
+  Display->print(Title);
+  Display->drawRect(X,Y,W,H,EPD_BLACK);
+  for(int i = 0; i<W-2; i++)//data should be 2 less than the width
+  {
+    Display->drawFastVLine((X+i+1), Y+H, -(Data[i]), EPD_BLACK);
+  }
+  for(int i = 0; i<W; i++)
+  {
+    if ((i)%16==0)
+    {
+        Display->drawFastVLine(X+W-(i+1),Y+H, 8, EPD_BLACK);//x+w starts from the right, and moves left
+    }
+    else if ((i)%8==0)
+    {
+        Display->drawFastVLine(X+W-(i+1),Y+H, 6, EPD_BLACK);
+    }
+    else if ((i)%4==0)
+    {
+        Display->drawFastVLine(X+W-(i+1),Y+H, 4, EPD_BLACK);
+    }
+  }
+  return;
+}
+
+void Graph::updateData(int* input)
+{
+  Data = input;
+}
+
+void drawGraph(int x, int y, int w, int h, int* data, String title, Adafruit_IL0373* display)
 {
   display->setCursor(x,y-10);
   display->setTextColor(EPD_BLACK);

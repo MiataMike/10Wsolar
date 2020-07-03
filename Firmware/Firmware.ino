@@ -13,13 +13,16 @@
 #define SD_CS       7
 
 int chartData1[85];
-char chartTitle1[] = "SOC";
+String chartTitle1 = "SOC";
 int chartData2[84];
-char chartTitle2[] = "Power";
+String chartTitle2 = "Power";
 Adafruit_IL0373 display(296, 128, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY);
+Graph SOCgraph(5, 32, 86,86,"SOC %", &display);
+Graph POWgraph(96, 32, 86,86, "Power W", &display);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  analogReadRes(16);
   delay(1000);
   
   for(int i = 0; i<84; i++)
@@ -32,12 +35,16 @@ void setup() {
     chartData2[i] = 42*sin(i*6.28/42)+42;
     //Serial.println(chartData2[i]);
   }
-  
+  SOCgraph.updateData(chartData1);
+  POWgraph.updateData(chartData2);
+
   display.begin();
   display.clearBuffer();
   drawWindow(&display);
-  drawGraph( 5, 32, 86,86,chartData1, chartTitle1, &display);
-  drawGraph(96, 32, 86,86,chartData2, chartTitle2, &display);
+  SOCgraph.draw();
+  POWgraph.draw();
+  //drawGraph( 5, 32, 86,86,chartData1, chartTitle1, &display);
+  //drawGraph(96, 32, 86,86,chartData2, chartTitle2, &display);
   drawTerminal(&display);
   display.display();
 
@@ -49,7 +56,10 @@ void loop() {
 
 while(1)
 {
-  
-  delay(1000);
+ Serial.println(readSolar());
+ Serial.println(readCurr());
+ Serial.println(readBatt()); 
+ Serial.println("_________");
+ delay(1000);
 }
 }
