@@ -1,6 +1,8 @@
 #include <Adafruit_GFX.h>    // Core graphics library
 #include "Adafruit_EPD.h"
 #include "gauges.h"
+#include "reading.h"
+#include "control.h"
 #include "math.h"
 
 #define EPD_CS      4
@@ -8,7 +10,7 @@
 #define SRAM_CS     6
 #define EPD_RESET   8 // can set to -1 and share with microcontroller Reset!
 #define EPD_BUSY    9 // can set to -1 to not use a pin (will wait a fixed delay)
-
+#define SD_CS       7
 
 int chartData1[85];
 char chartTitle1[] = "SOC";
@@ -30,13 +32,16 @@ void setup() {
     chartData2[i] = 42*sin(i*6.28/42)+42;
     //Serial.println(chartData2[i]);
   }
+  
   display.begin();
   display.clearBuffer();
-  drawWindow(display);
-  drawGraph( 5, 32, 86,86,chartData1, chartTitle1, display);
-  drawGraph(96, 32, 86,86,chartData2, chartTitle2, display);
-  drawTerminal(display);
+  drawWindow(&display);
+  drawGraph( 5, 32, 86,86,chartData1, chartTitle1, &display);
+  drawGraph(96, 32, 86,86,chartData2, chartTitle2, &display);
+  drawTerminal(&display);
   display.display();
+
+  
 }
 
 void loop() {
@@ -44,6 +49,7 @@ void loop() {
 
 while(1)
 {
+  
   delay(1000);
 }
 }
