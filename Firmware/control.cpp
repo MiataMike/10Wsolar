@@ -1,8 +1,11 @@
 #include "control.h"
 #include "arduino.h"
-//for now just lock on the top mosfet and let current roll through like a direct connection
+
 int initControl()
 {
+  pinMode(HighsidePin, OUTPUT);
+  //analogWriteFrequency(HighsidePin, 375000);
+	//analogWrite(HighsidePin, 32);
 	digitalWrite(HighsidePin, HIGH);
 	return 0;
 }

@@ -19,9 +19,10 @@ class Graph
     Graph(int x, int y, int w, int h, String title, Adafruit_IL0373* display);
     void draw();
     void updateData(int* input);    
+    void updateData2(int len, int input);
 };
 void drawGraph(int x, int y, int w, int h, int* data, String title, Adafruit_IL0373* display);
 void drawWindow(Adafruit_IL0373* display);
-void drawTerminal(Adafruit_IL0373* display);
+void drawTerminal(float Vbatt, float Vpan, float Apan, Adafruit_IL0373* display);
 void updateGraphData(int* data, int len, float input);
 #endif

@@ -88,7 +88,7 @@ void drawGraph(int x, int y, int w, int h, int* data, String title, Adafruit_IL0
 void drawWindow(Adafruit_IL0373* display)
 {
   display->drawRect(0,0, display_width, 18, EPD_BLACK);//bar
-  display->drawFastHLine(0,1, display_width, EPD_RED);
+  //display->drawFastHLine(0,1, display_width, EPD_RED);
   display->drawFastHLine(0,2, display_width, EPD_BLACK);
 /*  display->drawRect(282,4,12,12, EPD_BLACK);// X square
     display->drawLine(282+closeXoffset2,4+closeYoffset1, 282+closeXoffset1, 4+closeYoffset2, EPD_BLACK);//diagonal lines    
@@ -102,16 +102,16 @@ void drawWindow(Adafruit_IL0373* display)
   display->setCursor(70, 7);//mid bar
   display->setTextColor(EPD_BLACK);
   display->print("Lunar Power Monitor V0->1");
-  display->drawBitmap(3, 4, T, 12, 12, EPD_RED);
+  //display->drawBitmap(3, 4, T, 12, 12, EPD_RED);
   return;
 }
 
 #define terminalYoffset 19
 #define textH 10
-void drawTerminal(Adafruit_IL0373* display)
+void drawTerminal(float Vbatt, float Vpan, float Abatt, Adafruit_IL0373* display)
 {
   display->drawRect(187,terminalYoffset, 296-187, 18, EPD_BLACK);//bar
-  display->drawFastHLine(188,terminalYoffset+1,295-188,EPD_RED);//flair
+  //display->drawFastHLine(188,terminalYoffset+1,295-188,EPD_RED);//flair
   display->setCursor(200,terminalYoffset+6);
   display->setTextColor(EPD_BLACK);
   display->print("");
@@ -128,13 +128,21 @@ void drawTerminal(Adafruit_IL0373* display)
   display->setTextColor(EPD_INVERSE);
   display->print("$stat->sh");
   display->setCursor(187+2, terminalYoffset+18+2+textH);
-  display->print("Panel Voltage: 0V");
+  display->print("Vpanel:    ");
+  display->print(Vpan);
+  display->print("V");
   display->setCursor(187+2, terminalYoffset+18+2+textH*2);
-  display->print("Panel Power:   0W");
+  display->print("Ppanel:    ");
+  display->print(Vbatt*Abatt);
+  display->print("W");
   display->setCursor(187+2, terminalYoffset+18+2+textH*3);
-  display->print("Panel Current: 0A");
+  display->print("Current:   ");
+  display->print(Abatt);
+  display->print("A");
   display->setCursor(187+2, terminalYoffset+18+2+textH*4);
-  display->print("SOC:        50->0%");
+  display->print("Vbatt:     ");
+  display->print(Vbatt);
+  display->print("V");
   display->setCursor(187+2, terminalYoffset+18+2+textH*5);
   display->print("$_");
       
@@ -142,12 +150,14 @@ void drawTerminal(Adafruit_IL0373* display)
 }
 
 //use 0-100
-void updateGraphData(int* data, int len, int input)
+void Graph::updateData2(int len, int input)
 {
   for(int i = 1; i < len; i++)
   {
-    data[i] = data[i-1];// shift everything (oldest results in lowest index)
+    //Serial.println(i);
+    //Data = 1;// shift everything (oldest results in lowest index)
+    Data[i-1] = Data[i];// shift everything (oldest results in lowest index)
   }
-  data[len-1] = input;
+  Data[len-1] = input;
   return;
 }

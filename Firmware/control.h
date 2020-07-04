@@ -5,6 +5,6 @@
 #define LowsidePin 22
 
 int initControl();
-void updateControl();
+void updateControl(float Vbus);
 
 #endif
