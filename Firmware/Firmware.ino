@@ -32,9 +32,9 @@ File datalog;
 
 
 #define hr 9
-#define minute 55
+#define minute 24
 #define sec 45
-#define day 4
+#define day 7
 #define month 7
 #define yr 2020
 
