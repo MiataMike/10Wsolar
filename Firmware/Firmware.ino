@@ -81,8 +81,8 @@ while(1)
  Serial.println("_________");
  updateControl(Vbatt);
 
-  SOCgraph.updateData2(84, (int)(Vbatt * 84) / 15.0);
-  POWgraph.updateData2(84, (int)Vbatt * Abatt * 84/13.0);
+  SOCgraph.updateData2(84, (int)(Vbatt * 84 / 15.0));
+  POWgraph.updateData2(84, (int)(Vbatt * Abatt * 84/13.0));
 
   display.clearBuffer();
   drawWindow(&display);
