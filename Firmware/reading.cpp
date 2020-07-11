@@ -6,7 +6,7 @@ float readSolar()
 	int tmp = 0;
 	tmp = analogRead(solarPin);
 	solar = tmp * 3.3 / 65536 * 10 * 4.13/5.76; //3.3vref, 16 bit converter with 1/10 divider on front end, calibrated
-	return solar;
+	return sx * solar + sb;
 }
 float readBatt()
 {	
@@ -14,7 +14,7 @@ float readBatt()
 	int tmp = 0;
 	tmp = analogRead(battPin);
 	batt = tmp * 3.3 / 65536 * 10 * 4.6/6.51 ; //3.3vref, 16 bit converter with 1/10 divider on front end, calibrated
-	return batt;
+	return bx * batt + bb;
 }
 float readCurr()
 {
@@ -22,5 +22,5 @@ float readCurr()
 	int tmp = 0;
 	tmp = analogRead(currPin);
 	curr = tmp * 3.3 / 65536; // 1V/A
-	return curr;
+	return cx * curr s+ cb;
 }
