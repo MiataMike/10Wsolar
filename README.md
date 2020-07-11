@@ -1,5 +1,5 @@
 # 10Wsolar
-![image of charger](Http://michael-turner.ee/images/Dash.jpg)
+![image of charger](FirstStepsSm.jpg)
 This project is a solar power converter for charging the 12V battery in my truck with a 10W solar panel I got from amazon. 
 ## MPPT control
 Solar panels deliver different currents at different voltages, in the specs below we can see it's 0A @ 21V and .57A @ 17.5V.
