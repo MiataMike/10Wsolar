@@ -22,5 +22,5 @@ float readCurr()
 	int tmp = 0;
 	tmp = analogRead(currPin);
 	curr = tmp * 3.3 / 65536; // 1V/A
-	return cx * curr s+ cb;
+	return cx * curr + cb;
 }
