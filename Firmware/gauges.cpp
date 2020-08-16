@@ -101,7 +101,7 @@ void drawWindow(Adafruit_IL0373* display)
 */
   display->setCursor(70, 7);//mid bar
   display->setTextColor(EPD_BLACK);
-  display->print("Lunar Power Monitor V0->1");
+  display->print("Lunar Power Monitor V0.2");
   //display->drawBitmap(3, 4, T, 12, 12, EPD_RED);
   return;
 }
@@ -111,7 +111,7 @@ void drawWindow(Adafruit_IL0373* display)
 void drawTerminal(float Vbatt, float Vpan, float Abatt, Adafruit_IL0373* display)
 {
   display->drawRect(187,terminalYoffset, 296-187, 18, EPD_BLACK);//bar
-  //display->drawFastHLine(188,terminalYoffset+1,295-188,EPD_RED);//flair
+  display->drawFastHLine(188,terminalYoffset+1,295-188,EPD_RED);//flair
   display->setCursor(200,terminalYoffset+6);
   display->setTextColor(EPD_BLACK);
   display->print("");
@@ -126,7 +126,7 @@ void drawTerminal(float Vbatt, float Vpan, float Abatt, Adafruit_IL0373* display
   display->fillRect(187, terminalYoffset+18, 296-187, 128-(terminalYoffset+18)-2,EPD_BLACK);
   display->setCursor(187+2, terminalYoffset+18+2);
   display->setTextColor(EPD_INVERSE);
-  display->print("$stat->sh");
+  display->print("$stat.sh");
   display->setCursor(187+2, terminalYoffset+18+2+textH);
   display->print("Vpanel:    ");
   display->print(Vpan);

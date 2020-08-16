@@ -26,16 +26,16 @@ float Vbatt = -1;
 float Vpan = -1;
 float Abatt = -1;
 
-int duty = 32;
+int duty = 222;
 
 File datalog;
 
 
-#define hr 9
-#define minute 24
-#define sec 45
-#define day 7
-#define month 7
+#define hr 14
+#define minute 29
+#define sec 0
+#define day 16
+#define month 11
 #define yr 2020
 
 
@@ -78,8 +78,9 @@ while(1)
  Serial.println(Vpan);
  Serial.println(Abatt);
  Serial.println(Vbatt); 
+ Serial.println(duty);
  Serial.println("_________");
- updateControl(Vbatt);
+ duty = highPower(Vbatt, Abatt, duty);
 
   SOCgraph.updateData2(84, (int)(Vbatt * 84 / 15.0));
   POWgraph.updateData2(84, (int)(Vbatt * Abatt * 84/13.0));
@@ -103,9 +104,10 @@ while(1)
     datalog.print(",");
     datalog.println(duty);  
     datalog.close();
+    
   }
   
-  delay(60000*5);
+  delay(600000*5);
   
 }
-}
+}//end loop()
