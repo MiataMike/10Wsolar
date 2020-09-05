@@ -4,8 +4,9 @@
 int initControl()
 {
   pinMode(HighsidePin, OUTPUT);
-  analogWriteFrequency(HighsidePin, 375000);
-	analogWrite(HighsidePin, 200);
+  analogWriteResolution(6);
+  analogWriteFrequency(HighsidePin, 1500000);
+	analogWrite(HighsidePin, 0);
 	//digitalWrite(HighsidePin, HIGH);
 	return 0;
 }
@@ -28,7 +29,9 @@ int highPower(float Vbus, float Abatt, int duty)
 {
   static float lastPow = 0; // filter this?
   static bool upLast = false; // hillclimbing state
-  if(lastPow > Vbus*Abatt)//if it got worse
+  if(Abatt < .02){return dutyUp(duty);} // keep it from getting stuck
+  else if(Vbus > 13.7){return dutyDown(duty);}// don't overcharge
+  else if(lastPow > Vbus*Abatt)//if it got worse
   {
     if(upLast){duty = dutyDown(duty);}//and it was going up, go down
     else{duty = dutyUp(duty);}        //if it was going down, go up
@@ -40,14 +43,12 @@ int highPower(float Vbus, float Abatt, int duty)
     else{duty = dutyDown(duty);}      //GJ 
   }
   lastPow = Vbus*Abatt;
-  if(Vbus > 14.4){duty = 0;}
-  analogWrite(HighsidePin, duty);
   return duty;
 }
 
 
 //Bounds checking I didn't want to include in the function
-#define dutyMin 200 //so it doesnt get lost
+#define dutyMin 0 //so it doesnt get lost
 int dutyDown(int duty)
 {
   if (duty <= dutyMin)
@@ -58,7 +59,7 @@ int dutyDown(int duty)
   return duty;
 }
 
-#define dutyMax 255
+#define dutyMax 64
 int dutyUp(int duty)
 {
   if (duty >= dutyMax)

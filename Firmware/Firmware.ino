@@ -26,22 +26,26 @@ float Vbatt = -1;
 float Vpan = -1;
 float Abatt = -1;
 
-int duty = 222;
+int duty = 0;
 
 File datalog;
 
+elapsedMillis timeSinceDisplay;
+#define DisplayPeriodMillis 60000*5
+elapsedMillis timeSinceCmd;
+#define CmdPeriodMillis 100 // TODO tune this
 
-#define hr 14
-#define minute 29
+#define hr 9
+#define minute 21
 #define sec 0
-#define day 16
-#define month 11
+#define day 20
+#define month 8
 #define yr 2020
 
 
 
 void setup() {
-  setTime(hr,minute,sec,day,month,yr);
+  //setTime(hr,minute,sec,day,month,yr);Soldered on RTC, Synced with NTP
   // put your setup code here, to run once:
   Serial.begin(9600);
   analogReadRes(16);
@@ -72,42 +76,49 @@ void loop() {
 
 while(1)
 {
-  Vpan = readSolar();
-  Abatt = readCurr();
-  Vbatt = readBatt();
- Serial.println(Vpan);
- Serial.println(Abatt);
- Serial.println(Vbatt); 
- Serial.println(duty);
- Serial.println("_________");
- duty = highPower(Vbatt, Abatt, duty);
+  if(timeSinceDisplay > DisplayPeriodMillis)
+  {
+    timeSinceDisplay -= DisplayPeriodMillis;
+    SOCgraph.updateData2(84, (int)(Vbatt * 84 / 15.0));
+    POWgraph.updateData2(84, (int)(Vbatt * Abatt * 84/13.0));
 
-  SOCgraph.updateData2(84, (int)(Vbatt * 84 / 15.0));
-  POWgraph.updateData2(84, (int)(Vbatt * Abatt * 84/13.0));
-
-  display.clearBuffer();
-  drawWindow(&display);
-  SOCgraph.draw();
-  POWgraph.draw();
-  drawTerminal(Vbatt, Vpan, Abatt, &display);
-  display.display();
-  datalog = SD.open("datalog.csv", FILE_WRITE);
-  if (datalog)
-  {// Time, Vpanel, Abatt, Vbatt, duty
-    datalog.print(now());
-    datalog.print(",");
-    datalog.print(Vpan);
-    datalog.print(",");
-    datalog.print(Abatt);
-    datalog.print(",");
-    datalog.print(Vbatt);
-    datalog.print(",");
-    datalog.println(duty);  
-    datalog.close();
-    
+    display.clearBuffer();
+    drawWindow(&display);
+    SOCgraph.draw();
+    POWgraph.draw();
+    drawTerminal(Vbatt, Vpan, Abatt, &display);
+    display.display();
+    datalog = SD.open("datalog.csv", FILE_WRITE);
+    if (datalog)
+    {// Time, Vpanel, Abatt, Vbatt, duty
+      datalog.print(now());
+      datalog.print(",");
+      datalog.print(Vpan);
+      datalog.print(",");
+      datalog.print(Abatt);
+      datalog.print(",");
+      datalog.print(Vbatt);
+      datalog.print(",");
+      datalog.println(duty);  
+      datalog.close();
+    }
   }
-  
-  delay(600000*5);
+
+  if(timeSinceCmd > CmdPeriodMillis)
+  {
+    timeSinceCmd -= CmdPeriodMillis;
+    Vpan = readSolar();
+    Abatt = readCurr();
+    Vbatt = readBatt();
+    Serial.println(Vpan);
+    Serial.println(Abatt);
+    Serial.println(Vbatt); 
+    Serial.println(duty);
+    Serial.println("_________");
+    duty = highPower(Vbatt, Abatt, duty);
+    analogWrite(HighsidePin, duty);
+
+  }
   
 }
 }//end loop()
